@@ -1,0 +1,6 @@
+.venv/: Ignores Python virtual environment directories typically named venv/ or similar.
+.env/: Ignores environment variable files typically used for local configuration.
+*.pyc, __pycache__/: Ignores compiled Python files (*.pyc) and Python cache directories (__pycache__/).
+.vscode/, .idea/: Ignores IDE/Editor-specific directories (e.g., Visual Studio Code, PyCharm).
+*.log, *.sqlite3: Ignores local development environment files like logs and SQLite database files.
+node_modules/: Ignores Node.js dependency directories (node_modules/) for JavaScript projects.
