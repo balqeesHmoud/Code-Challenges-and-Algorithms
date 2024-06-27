@@ -49,3 +49,27 @@ class MyQueue:
         bool: True if the queue is empty, False otherwise.
         """
         return not self.stack1 and not self.stack2
+
+# Example usage
+if __name__ == "__main__":
+    queue = MyQueue()
+
+    # Push elements onto the queue
+    queue.push(1)
+    queue.push(2)
+    queue.push(3)
+
+    # Print the queue state
+    print(f"Queue elements after pushes: {queue.stack1}")
+
+    # Pop an element from the queue
+    popped_element = queue.pop()
+    print(f"Popped element: {popped_element}")
+
+    # Peek at the front element of the queue
+    front_element = queue.peek()
+    print(f"Front element (peek): {front_element}")
+
+    # Check if the queue is empty
+    is_empty = queue.empty()
+    print(f"Is the queue empty? {is_empty}")
