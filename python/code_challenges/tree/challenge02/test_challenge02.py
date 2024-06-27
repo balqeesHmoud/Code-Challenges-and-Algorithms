@@ -32,21 +32,35 @@ class TestSameTree(unittest.TestCase):
         self.tree6 = build_tree([1, 1, 2])
 
     def test_same_trees(self):
-        self.assertTrue(is_same_tree(self.tree1, self.tree2))
+        result = is_same_tree(self.tree1, self.tree2)
+        print("Test same trees: ", result)
+        self.assertTrue(result)
 
     def test_different_structures(self):
-        self.assertFalse(is_same_tree(self.tree1, self.tree3))
-        self.assertFalse(is_same_tree(self.tree1, self.tree4))
+        result1 = is_same_tree(self.tree1, self.tree3)
+        result2 = is_same_tree(self.tree1, self.tree4)
+        print("Test different structures (tree1 vs tree3): ", result1)
+        print("Test different structures (tree1 vs tree4): ", result2)
+        self.assertFalse(result1)
+        self.assertFalse(result2)
 
     def test_different_values(self):
-        self.assertFalse(is_same_tree(self.tree5, self.tree6))
+        result = is_same_tree(self.tree5, self.tree6)
+        print("Test different values: ", result)
+        self.assertFalse(result)
 
     def test_empty_trees(self):
-        self.assertTrue(is_same_tree(None, None))
+        result = is_same_tree(None, None)
+        print("Test empty trees: ", result)
+        self.assertTrue(result)
 
     def test_one_tree_empty(self):
-        self.assertFalse(is_same_tree(self.tree1, None))
-        self.assertFalse(is_same_tree(None, self.tree2))
+        result1 = is_same_tree(self.tree1, None)
+        result2 = is_same_tree(None, self.tree2)
+        print("Test one tree empty (tree1 vs None): ", result1)
+        print("Test one tree empty (None vs tree2): ", result2)
+        self.assertFalse(result1)
+        self.assertFalse(result2)
 
 if __name__ == '__main__':
     unittest.main()
