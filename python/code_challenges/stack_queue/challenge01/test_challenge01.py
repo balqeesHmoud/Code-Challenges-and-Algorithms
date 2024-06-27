@@ -1,4 +1,4 @@
-# Write your test here
+# test_challenge01.py
 
 import pytest
 from challenge01 import MyQueue
@@ -17,4 +17,11 @@ def test_my_queue():
     assert myQueue.empty(), "Empty operation failed (should be True)"  # Should return True
 
 if __name__ == "__main__":
-    pytest.main()
+    # Run pytest programmatically and capture the result
+    result_code = pytest.main(["-q", "--tb=short"])
+    
+    # Print a message based on the result
+    if result_code == pytest.ExitCode.OK:
+        print("All tests passed!")
+    else:
+        print("Tests failed or encountered errors.")

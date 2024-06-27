@@ -1,4 +1,5 @@
-# Write here the code challenge solution
+
+
 class MyQueue:
     def __init__(self):
         """
