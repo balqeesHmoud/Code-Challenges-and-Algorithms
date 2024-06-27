@@ -41,3 +41,35 @@ def is_same_tree(p: TreeNode, q: TreeNode) -> bool:
             return False
     
     return True
+
+# Example usage:
+if __name__ == "__main__":
+    # Example 1: Identical trees
+    # Tree 1
+    p1 = TreeNode(1)
+    p1.left = TreeNode(2)
+    p1.right = TreeNode(3)
+
+    # Tree 2 (identical to Tree 1)
+    q1 = TreeNode(1)
+    q1.left = TreeNode(2)
+    q1.right = TreeNode(3)
+
+    result1 = is_same_tree(p1, q1)
+    print("Example 1: Trees are identical")
+    print("Result:", result1)
+    print()
+
+    # Example 2: Non-identical trees
+    # Tree 3
+    p2 = TreeNode(1)
+    p2.left = TreeNode(2)
+
+    # Tree 4 (different structure compared to Tree 3)
+    q2 = TreeNode(1)
+    q2.right = TreeNode(2)
+
+    result2 = is_same_tree(p2, q2)
+    print("Example 2: Trees are not identical")
+    print("Result:", result2)
+    print()
