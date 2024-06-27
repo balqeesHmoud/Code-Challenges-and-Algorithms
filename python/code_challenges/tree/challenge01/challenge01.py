@@ -46,39 +46,73 @@ class Tree:
         return helper(0, len(preorder) - 1, 0, len(inorder) - 1)
 
 class Main:
-    def run(self):
+    def run_tests(self):
         """
-        Runs the tree construction examples and prints the results.
+        Runs the tree construction tests and prints the results.
         """
         # Example 1
         preorder1 = [3, 9, 20, 15, 7]
         inorder1 = [9, 3, 15, 20, 7]
-        tree1 = Tree()
-        root1 = tree1.buildTree(preorder1, inorder1)
+        expected_output1 = [3, 9, 20, None, None, 15, 7]
+        root1 = Tree().buildTree(preorder1, inorder1)
+        result1 = self.treeToList(root1)
         print("Example 1:")
-        self.printTree(root1)
-        
+        self.print_comparison(result1, expected_output1)
+        print()
+
         # Example 2
         preorder2 = [-1]
         inorder2 = [-1]
-        tree2 = Tree()
-        root2 = tree2.buildTree(preorder2, inorder2)
+        expected_output2 = [-1]
+        root2 = Tree().buildTree(preorder2, inorder2)
+        result2 = self.treeToList(root2)
         print("Example 2:")
-        self.printTree(root2)
+        self.print_comparison(result2, expected_output2)
+        print()
+
+        # Test empty tree
+        preorder3 = []
+        inorder3 = []
+        expected_output3 = []
+        root3 = Tree().buildTree(preorder3, inorder3)
+        result3 = self.treeToList(root3)
+        print("Empty Tree Test:")
+        self.print_comparison(result3, expected_output3)
+        print()
+
+        # Test single node tree
+        preorder4 = [1]
+        inorder4 = [1]
+        expected_output4 = [1]
+        root4 = Tree().buildTree(preorder4, inorder4)
+        result4 = self.treeToList(root4)
+        print("Single Node Tree Test:")
+        self.print_comparison(result4, expected_output4)
+        print()
+
+        # Test complex tree
+        preorder5 = [1, 2, 4, 5, 3, 6, 7]
+        inorder5 = [4, 2, 5, 1, 6, 3, 7]
+        expected_output5 = [1, 2, 3, 4, 5, 6, 7]
+        root5 = Tree().buildTree(preorder5, inorder5)
+        result5 = self.treeToList(root5)
+        print("Complex Tree Test:")
+        self.print_comparison(result5, expected_output5)
+        print()
 
     def treeToList(self, root):
         """
-        Converts a binary tree to a list for easy comparison in tests.
+        Converts a binary tree to a list for easy comparison.
 
         :param root: The root node of the binary tree.
         :return: List representation of the binary tree.
         """
         if not root:
             return []
-        
+
         result = []
         queue = [root]
-        
+
         while queue:
             node = queue.pop(0)
             if node:
@@ -87,43 +121,27 @@ class Main:
                 queue.append(node.right)
             else:
                 result.append(None)
-        
-        # Trim the trailing None values
+
+        # Trim trailing None values
         while result and result[-1] is None:
             result.pop()
-        
+
         return result
-    
-    def printTree(self, root):
-        """
-        Prints the binary tree in a level order format.
 
-        :param root: The root node of the binary tree.
+    def print_comparison(self, result, expected):
         """
-        if not root:
-            print("Tree is empty")
-            return
-        
-        result = []
-        queue = [root]
-        
-        while queue:
-            level_size = len(queue)
-            level_nodes = []
-            for _ in range(level_size):
-                node = queue.pop(0)
-                if node:
-                    level_nodes.append(node.value)
-                    queue.append(node.left)
-                    queue.append(node.right)
-                else:
-                    level_nodes.append(None)
-            result.append(level_nodes)
-        
-        for level in result:
-            print(level)
+        Prints the comparison between result and expected output.
 
-# Running the solution
+        :param result: The actual result from the treeToList method.
+        :param expected: The expected output.
+        """
+        print("Expected:", expected)
+        print("Result:", result)
+        if result == expected:
+            print("Pass")
+        else:
+            print("Fail")
+
 if __name__ == "__main__":
     main = Main()
-    main.run()
+    main.run_tests()
