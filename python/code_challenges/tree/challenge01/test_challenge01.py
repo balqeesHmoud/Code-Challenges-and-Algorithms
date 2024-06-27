@@ -1,5 +1,6 @@
-from challenge01 import *
 import unittest
+from challenge01 import Tree, Main
+
 class TestTreeConstruction(unittest.TestCase):
     def setUp(self):
         """
@@ -64,3 +65,4 @@ class TestTreeConstruction(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
