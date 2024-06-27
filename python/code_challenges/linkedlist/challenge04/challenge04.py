@@ -1,3 +1,4 @@
+
 class ListNode:
     """
     Definition for a singly linked list node.
@@ -9,7 +10,7 @@ class ListNode:
     def __init__(self, value=0, next=None):
         """
         Initialize a new ListNode.
-        S
+        
         Args:
             value (int): The value of the node.
             next (ListNode, optional): The next node in the linked list. Defaults to None.

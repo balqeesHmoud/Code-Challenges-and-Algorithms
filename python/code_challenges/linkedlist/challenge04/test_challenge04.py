@@ -1,3 +1,4 @@
+
 import pytest
 from challenge04 import ListNode, reverse_linked_list
 
@@ -43,7 +44,11 @@ def test_reverse_linked_list():
     """
     head = list_to_linkedlist([1, 2, 3, 4, 5])
     reversed_head = reverse_linked_list(head)
-    assert linkedlist_to_list(reversed_head) == [5, 4, 3, 2, 1]
+    reversed_list = linkedlist_to_list(reversed_head)
+    assert reversed_list == [5, 4, 3, 2, 1]
+    
+    # Print the reversed linked list for visualization
+    print("Reversed Linked List:", reversed_list)
 
 def test_reverse_empty_list():
     """
@@ -51,7 +56,11 @@ def test_reverse_empty_list():
     """
     head = list_to_linkedlist([])
     reversed_head = reverse_linked_list(head)
-    assert linkedlist_to_list(reversed_head) == []
+    reversed_list = linkedlist_to_list(reversed_head)
+    assert reversed_list == []
+    
+    # Print the reversed linked list for visualization
+    print("Reversed Linked List:", reversed_list)
 
 def test_reverse_single_element_list():
     """
@@ -59,4 +68,14 @@ def test_reverse_single_element_list():
     """
     head = list_to_linkedlist([1])
     reversed_head = reverse_linked_list(head)
-    assert linkedlist_to_list(reversed_head) == [1]
+    reversed_list = linkedlist_to_list(reversed_head)
+    assert reversed_list == [1]
+    
+    # Print the reversed linked list for visualization
+    print("Reversed Linked List:", reversed_list)
+
+# Additional tests and functions...
+
+# Running the tests using pytest
+if __name__ == "__main__":
+    pytest.main()
