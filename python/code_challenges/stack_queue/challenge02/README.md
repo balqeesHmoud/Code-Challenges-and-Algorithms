@@ -1,6 +1,8 @@
 
 # Whiteboard
 
+![Whiteboard](./challenge02-stack.png)
+
 ## Problem Domain
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
@@ -55,8 +57,9 @@ A string is considered valid if:
 ### Time Complexity: O(n)
 - We iterate through the string once, performing constant-time operations (push, pop, and dictionary lookup) for each character.
 
-### Space Complexity: O(n)
-- In the worst case, the stack will contain all the opening brackets in the input string, which would be O(n) space.
+### Time Complexity: O(n)
+- We iterate through the string once, performing constant-time operations (push, pop, and dictionary lookup) for each character.
+
 
 ## Visualization
 
