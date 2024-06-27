@@ -33,3 +33,23 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         return slow
+# Usage example
+if __name__ == "__main__":
+    # Create a linked list: 1 -> 2 -> 3 -> 4 -> 5 -> None
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+    head.next.next.next.next = ListNode(5)
+
+    # Initialize the Solution class
+    solution = Solution()
+
+    # Find the middle node
+    middle_node = solution.middleNode(head)
+
+    # Print the value of the middle node
+    if middle_node:
+        print(f"The middle node value is: {middle_node.val}")
+    else:
+        print("The linked list is empty.")
