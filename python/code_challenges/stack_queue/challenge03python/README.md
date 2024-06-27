@@ -1,4 +1,5 @@
 # Whiteboard Explanation for Challenge 03: Delete Middle Node
+![](./challenge03-stack.png)
 
 ## Problem Domain
 Write a function that takes the head of a stack, deletes the middle element in the stack, and returns the new stack. A stack is represented as a list in Python, where the end of the list is the top of the stack.
