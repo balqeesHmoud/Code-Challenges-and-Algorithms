@@ -1,4 +1,7 @@
-# Stack and Queue:
+
+
+# whiteboard:
+![](./challenge04-stack.png)
 
 ## Challenge04 - Reverse Queue:
 Write a function that it takes a queue, Reverse it and return the new queue.</p>
