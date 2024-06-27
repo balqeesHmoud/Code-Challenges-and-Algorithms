@@ -1,4 +1,5 @@
 # whiteboard
+![](./challenge02-tree.png)
 
 ## Problem Domain
 
