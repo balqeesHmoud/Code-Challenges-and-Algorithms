@@ -1,4 +1,3 @@
-
 class ListNode:
     """
     Definition for a singly linked list node.
@@ -38,3 +37,30 @@ def reverse_linked_list(head: ListNode) -> ListNode:
         current = next_node
     
     return prev
+
+# Usage example
+if __name__ == "__main__":
+    # Create a linked list: 1 -> 2 -> 3 -> 4 -> None
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+
+    # Print the original linked list
+    print("Original Linked List:")
+    current = head
+    while current:
+        print(current.value, end=" -> ")
+        current = current.next
+    print("None")
+
+    # Reverse the linked list
+    new_head = reverse_linked_list(head)
+
+    # Print the reversed linked list
+    print("\nReversed Linked List:")
+    current = new_head
+    while current:
+        print(current.value, end=" -> ")
+        current = current.next
+    print("None")
