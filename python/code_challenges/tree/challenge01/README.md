@@ -1,3 +1,6 @@
+
+# Whiteboard
+
 ![Alt text](./challenge-01-tree.png)
 # Challenge01 - Construct BT from Preorder & Inorder
 
@@ -18,10 +21,5 @@ Given two integer arrays, `preorder` and `inorder`, where `preorder` is the preo
 2. Create a hashmap to store the index of each value in the inorder array to optimize the search time.
 3. Recursively divide the arrays to construct the left and right subtrees.
 
-## Whiteboard
-![Whiteboard Image](whiteboard_image.png)
 
-## Notes
-- This task took approximately X hours to complete.
-- Challenges included understanding the recursive approach and managing the indices correctly.
-- Efficiently handling large inputs by avoiding slicing.
+
