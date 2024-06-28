@@ -66,3 +66,4 @@ def test_tree_construction_unbalanced():
     expected_output = [1, 2, None, 3, None, 4, None, 5]
 
     assert levelOrderTraversal(tree.root) == expected_output
+
