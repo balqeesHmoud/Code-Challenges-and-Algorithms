@@ -15,7 +15,6 @@ Given two integer arrays, `preorder` and `inorder`, where `preorder` is the preo
 ## Example 2
 - Input: `preorder = [-1]`, `inorder = [-1]`
 - Output: `[-1]`
-
 ## Solution
 1. Use a helper function to construct the tree recursively by using the indices of the preorder and inorder arrays.
 2. Create a hashmap to store the index of each value in the inorder array to optimize the search time.
