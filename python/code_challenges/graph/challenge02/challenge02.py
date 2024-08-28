@@ -1,156 +1,69 @@
-# Write here the code challenge solution
+from collections import deque
+
 class Node:
-    def __init__(self, value=None):
-        """
-        Initialize a Node with a specified value.
-
-        Args:
-        value (str): The value to store in the node.
-        """
+    def __init__(self, value):
         self.value = value
+        self.edges = []  # List to store edges connected to this node
 
-    def __str__(self):
-        """
-        Return the string representation of the Node.
-
-        Returns:
-        str: The value of the node.
-        """
-        return self.value
+    def add_edge(self, edge):
+        self.edges.append(edge)
 
 class Edge:
-    def __init__(self, vertex):
-        """
-        Initialize an Edge connecting to a specified vertex.
-
-        Args:
-        vertex (Node): The node that this edge points to.
-        """
-        self.vertex = vertex
-
-    def __str__(self):
-        """
-        Return the string representation of the Edge.
-
-        Returns:
-        str: The value of the vertex that this edge points to.
-        """
-        return str(self.vertex)
+    def __init__(self, from_node, to_node):
+        self.from_node = from_node
+        self.to_node = to_node
 
 class Graph:
     def __init__(self):
-        """
-        Initialize an empty graph with an adjacency list.
-        """
-        self.adj_list = {}
+        self.nodes = {}  # Dictionary to store nodes by their values
 
     def add_node(self, value):
-        """
-        Add a new node to the graph.
+        if value not in self.nodes:
+            self.nodes[value] = Node(value)
+        return self.nodes[value]
 
-        Args:
-        value (str): The value for the new node.
+    def add_edge(self, from_value, to_value):
+        from_node = self.add_node(from_value)
+        to_node = self.add_node(to_value)
+        edge = Edge(from_node, to_node)
+        from_node.add_edge(edge)
+        to_node.add_edge(edge)  # For an undirected graph
 
-        Returns:
-        Node: The newly created node.
-        """
-        new_node = Node(value)
-        self.adj_list[new_node] = []
-        return new_node
-
-    def add_edge(self, node1, node2):
-        """
-        Add an edge between two nodes in the graph.
-
-        Args:
-        node1 (Node): The first node.
-        node2 (Node): The second node.
-        
-        Returns:
-        str: An error message if a node does not exist; otherwise, None.
-        """
-        if node1 not in self.adj_list or node2 not in self.adj_list:
-            return "One or both nodes do not exist."
-
-        self.adj_list[node1].append(Edge(node2))
-        self.adj_list[node2].append(Edge(node1))
-
-    def breadth_first(self, start_value):
-        """
-        Perform a breadth-first traversal starting from a specified node value.
-
-        Args:
-        start_value (str): The value of the starting node.
-
-        Returns:
-        list: A list of values representing the BFS traversal order.
-        str: An error message if the starting node is not found.
-        """
-        start_node = next((node for node in self.adj_list if node.value == start_value), None)
-
-        if not start_node:
-            return f"Node with value '{start_value}' does not exist."
+    def bfs_traverse(self, start_value):
+        if start_value not in self.nodes:
+            return []
 
         visited = set()
-        queue = [start_node]
-        bfs_result = []
+        queue = deque([self.nodes[start_value]])
+        result = []
 
         while queue:
-            current_node = queue.pop(0)
-            if current_node not in visited:
-                visited.add(current_node)
-                bfs_result.append(current_node.value)
-                queue.extend(edge.vertex for edge in self.adj_list[current_node] if edge.vertex not in visited)
+            node = queue.popleft()
+            if node.value not in visited:
+                visited.add(node.value)
+                result.append(node.value)
+                for edge in node.edges:
+                    neighbor = edge.to_node if edge.from_node == node else edge.from_node
+                    if neighbor.value not in visited:
+                        queue.append(neighbor)
 
-        return bfs_result
-
-    def __str__(self):
-        """
-        Return a string representation of the graph's adjacency list.
-
-        Returns:
-        str: The formatted adjacency list.
-        """
-        result = "Graph Structure:\n"
-        for node, edges in self.adj_list.items():
-            edge_list = ' -> '.join(str(edge) for edge in edges)
-            result += f"{node}: {edge_list}\n"
         return result
 
 # Example Usage
+if __name__ == "__main__":
+    # Create a graph instance
+    g = Graph()
+    g.add_edge('A', 'B')
+    g.add_edge('A', 'C')
+    g.add_edge('B', 'D')
+    g.add_edge('B', 'E')
+    g.add_edge('C', 'F')
+    g.add_edge('C', 'G')
+    g.add_edge('D', 'H')
+    g.add_edge('E', 'I')
+    g.add_edge('F', 'J')
+    g.add_edge('G', 'K')
 
-graph = Graph()
-
-# Add nodes
-v1 = graph.add_node("A")
-v2 = graph.add_node("B")
-v3 = graph.add_node("C")
-v4 = graph.add_node("D")
-v5 = graph.add_node("E")
-v6 = graph.add_node("F")
-v7 = graph.add_node("G")
-v8 = graph.add_node("H")
-v9 = graph.add_node("I")
-v10 = graph.add_node("K")
-
-# Add edges
-graph.add_edge(v1, v2)
-graph.add_edge(v1, v3)
-graph.add_edge(v1, v5)
-graph.add_edge(v2, v4)
-graph.add_edge(v3, v6)
-graph.add_edge(v4, v5)
-graph.add_edge(v5, v6)
-graph.add_edge(v5, v7)
-graph.add_edge(v6, v8)
-graph.add_edge(v6, v9)
-graph.add_edge(v7, v8)
-graph.add_edge(v8, v10)
-graph.add_edge(v9, v10)
-
-# Print graph
-print(graph)
-
-# Perform BFS
-bfs_result = graph.breadth_first("A")
-print("Breadth First Result:", bfs_result)
+    # Perform BFS traversal starting from node 'A'
+    result = g.bfs_traverse('A')
+    print(result)
